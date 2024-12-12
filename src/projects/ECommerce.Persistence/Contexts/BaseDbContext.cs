@@ -36,7 +36,7 @@ public class BaseDbContext : DbContext
    
    
    
-   public DbSet<OperationClaim> OperationClaims { get; set; }
-   public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
+   public DbSet<AppOperationClaim> OperationClaims { get; set; }
+   public DbSet<AppUserOperationClaim> UserOperationClaims { get; set; }
    
 }
