@@ -1,17 +1,17 @@
-﻿
-using AutoMapper;
+﻿using AutoMapper;
+using Core.Application.Pipelines.Login;
 using ECommerce.Application.Features.Categories.Rules;
+using ECommerce.Application.Services.Repositories;
 using ECommerce.Domain.Entities;
-using ECommerce.Persistence.Abstracts;
 using MediatR;
 
 namespace ECommerce.Application.Features.Categories.Commands.Create;
-
-public sealed class CategoryAddCommand : IRequest<CategoryAddedResponseDto>
+public sealed class CategoryAddCommand : IRequest<CategoryAddedResponseDto> , ILoginRequest
 {
+    // Bir istek 500 ms den fazla bir sürede cevap verirse sisteme log atsın.
+    // Sipariş verebilmesi için veya farklı durumlar için kullanıcının sisteme login olması beklenmektedir.
     public string Name { get; set; }
-
-
+    
     public sealed class CategoryAddCommandHandler(
         IMapper _mapper, ICategoryRepository _categoryRepository,CategoryBusinessRules _businessRules
         )
@@ -33,4 +33,6 @@ public sealed class CategoryAddCommand : IRequest<CategoryAddedResponseDto>
             return response;
         }
     }
+
+   
 }

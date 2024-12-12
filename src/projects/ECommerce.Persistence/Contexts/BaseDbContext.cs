@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using Core.Security.Entities;
 
 namespace ECommerce.Persistence.Contexts;
 
@@ -23,5 +24,19 @@ public class BaseDbContext : DbContext
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
     }
 
-    DbSet<Category> Categories { get; set; } 
+   public DbSet<Category> Categories { get; set; }
+   public DbSet<Product> Products { get; set; }
+   public DbSet<ProductImage> ProductImages { get; set; }
+   public DbSet<SubCategory> SubCategories { get; set; }
+   public DbSet<AppUser> Users { get; set; }
+   public DbSet<Order> Orders { get; set; }
+   public DbSet<OrderItem> OrderItems { get; set; }
+   public DbSet<Tag> Tags { get; set; }
+   public DbSet<ProductTag> ProductTags { get; set; }
+   
+   
+   
+   public DbSet<OperationClaim> OperationClaims { get; set; }
+   public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
+   
 }
